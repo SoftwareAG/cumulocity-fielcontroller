@@ -42,7 +42,7 @@ export class FieldcontrollerNavigationFactory implements NavigatorNodeFactory {
     private applicationService: ApplicationService,
     private alertService: AlertService
   ) {
-    console.log("MappingNavigationFactory constructor");
+    //console.log("MappingNavigationFactory constructor");
   }
 
   async get() {
