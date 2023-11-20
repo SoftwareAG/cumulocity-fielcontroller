@@ -1,0 +1,89 @@
+<!--
+  ~ Copyright (c) 2022 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA,
+  ~ and/or its crtlsidiaries and/or its affiliates and/or their licensors.
+  ~
+  ~ SPDX-License-Identifier: Apache-2.0
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~ @authors Christof Strack
+  -->
+
+<div style="height: 200px; overflow-y: auto">
+  <table class="table table-condensed table-striped fixTableHead">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>
+          <div>
+            <span>Controller Type</span>
+            <span class="hidden-xs hidden-sm m-l-4">
+              <ng-template #popTemplateController>
+                Controllers can have different type: <code>COIL</code>,
+                <code>INPUT_REGISTER</code>, <code>DISCRETE_INPUT</code>,
+                <code>HOLDING_REGISTER</code>.
+              </ng-template>
+              <button
+                class="btn-clean text-primary"
+                [popover]="popTemplateController"
+                popoverTitle="Defined controllers"
+                placement="right"
+                triggers="focus"
+                type="button"
+              >
+                <i c8yIcon="question-circle-o"></i>
+              </button>
+            </span>
+          </div>
+        </th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let crtl of controllers; let i = index"
+        id="{{ 'crtl-' + id + '-' + i }}"
+        (click)="onControllerSelect(i)"
+      >
+        <td width="4%">
+          {{ i }}
+        </td>
+        <td width="8%">
+          {{ crtl.name }}
+        </td>
+        <td width="8%">
+          {{ crtl.type }}
+        </td>
+        <td width="8%">
+          <button
+            title="{{ 'Remove' | translate }}"
+            class="btn btn-icon btn-clean"
+            (click)="onControllerDelete(i)"
+          >
+            <i c8yIcon="trash-o" class="text-danger"></i>
+            <span class="sr-only" translate>Remove</span>
+          </button>
+          <button
+            title="{{ 'Update' | translate }}"
+            class="btn btn-icon btn-clean p-r-4"
+            (click)="onControllerUpdate(i)"
+          >
+            <i c8yIcon="pencil" class="text-danger"></i>
+            <span class="sr-only" translate>Update controller</span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

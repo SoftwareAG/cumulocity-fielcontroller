@@ -1,0 +1,37 @@
+{
+    "version": "2.0",
+    "controllers": {
+      "pump-pressure-1": [
+        {
+          "type": "input-register",
+          "start_address": 1,
+          "count": 3,
+          "unit": "bar",
+          "alias": ["rotary_pump_pressure", "rotation_max_pressure", "hold_back_pressure"]
+        },
+        {
+          "type": "discrete-input",
+          "start_address": 5,
+          "count": 2,
+          "alias": ["water_pressure"]
+        },
+        {
+          "type": "coil",
+          "start_address": 10
+        }
+      ],
+      "water-flow-1": [
+        {
+          "type": "holding-register",
+          "start_address": 1,
+          "unit": "ft3/d",
+          "dataType": "uint16"
+        },
+        {
+          "type": "coil",
+          "start_address": 3
+        }
+      ]
+    }
+  }
+

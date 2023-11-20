@@ -1,0 +1,103 @@
+<!--
+  ~ Copyright (c) 2022 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA,
+  ~ and/or its subsidiaries and/or its affiliates and/or their licensors.
+  ~
+  ~ SPDX-License-Identifier: Apache-2.0
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~ @authors Christof Strack
+  -->
+
+<c8y-title translate>Fieldcontroller</c8y-title>
+<c8y-action-bar-item [placement]="'right'">
+  <button
+    class="btn btn-link"
+    title="{{ 'Refresh' | translate }}"
+    (click)="loadProfiles()"
+  >
+    <i c8yIcon="refresh"></i>
+    {{ "Refresh" | translate }}
+  </button>
+  <button
+    class="btn btn-link"
+    title="{{ 'Add profile' | translate }}"
+    (click)="onAddProfile()"
+  >
+    <i c8yIcon="plus-circle"></i>
+    {{ "Add profile" | translate }}
+  </button>
+
+  <button
+    class="btn btn-link"
+    title="{{ 'Export profiles' | translate }}"
+    (click)="onExportAll()"
+  >
+    <i c8yIcon="download"></i>
+    {{ "Export profiles" | translate }}
+  </button>
+  <button
+    class="btn btn-link"
+    title="{{ 'Import profiles' | translate }}"
+    (click)="onImport()"
+  >
+    <i c8yIcon="upload"></i>
+    {{ "Import profiles" | translate }}
+  </button>
+</c8y-action-bar-item>
+<div class="card">
+  <div class="card-block">
+    <c8y-data-grid
+      [title]="titleProfile | translate"
+      [selectable]="'true'"
+      [columns]="columnsProfiles"
+      [bulkActionControls]="bulkActionControls"
+      [rows]="profiles"
+      [pagination]="pagination"
+      [actionControls]="actionControls"
+      [refresh]="refresh"
+    >
+    </c8y-data-grid>
+  </div>
+  <div class="card-block col-md-offset-5 bg-white">
+    <div class="c8y-empty-state" *ngIf="profiles.length === 0">
+      <h1 [c8yIcon]="'file-text'"></h1>
+      <p>
+        <strong>No profiles available.</strong><br />
+        <small translate>Add a new profile by clicking below.</small><br />
+        <button
+          class="btn btn-primary"
+          title="Add profile"
+          (click)="onAddProfile()"
+          translate
+        >
+          Add profile
+        </button>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div [ngClass]="{ drawerOpen: showConfigProfile }">
+  <div class="bottom-drawer">
+    <c8y-profile-stepper
+      *ngIf="showConfigProfile"
+      (onCancel)="showConfigProfile = false"
+      (onCommit)="onCommitProfile($event)"
+      [profile]="profileToUpdate"
+      [update]="update"
+      [profiles]="profiles"
+    >
+    </c8y-profile-stepper>
+  </div>
+</div>
