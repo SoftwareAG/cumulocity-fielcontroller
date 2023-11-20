@@ -198,6 +198,8 @@ export class ProfileGridComponent implements OnInit {
 
   updateProfile(profile: Profile) {
    // create deep copy of existing profile, in case user cancels changes
+   this.update = true;
+
     this.profileToUpdate = JSON.parse(JSON.stringify(profile));
     console.log("Editing profile", this.profileToUpdate);
     this.showConfigProfile = true;

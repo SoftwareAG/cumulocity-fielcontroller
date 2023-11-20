@@ -20,7 +20,7 @@
   -->
 
 <div style="height: 200px; overflow-y: auto">
-  <table class="table table-condensed table-striped fixTableHead">
+  <table class="table table-striped fixTableHead">
     <thead>
       <tr>
         <th>#</th>
@@ -56,13 +56,13 @@
         id="{{ 'crtl-' + id + '-' + i }}"
         (click)="onControllerSelect(i)"
       >
-        <td width="4%">
+        <td style="padding-top: 16px" width="4%">
           {{ i }}
         </td>
-        <td width="8%">
+        <td style="padding-top: 16px" width="8%">
           {{ crtl.name }}
         </td>
-        <td width="8%">
+        <td style="padding-top: 16px" width="8%">
           {{ crtl.functionCode }}
         </td>
         <td width="8%">
