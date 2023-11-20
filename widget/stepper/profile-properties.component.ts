@@ -25,7 +25,7 @@ export class ProfilePropertiesComponent implements OnInit {
             type: "select",
             wrappers: ["c8y-form-field"],
             templateOptions: {
-              label: "Controller type",
+              label: "Profile type",
               options: Object.keys(ProfileType).map((key) => {
                 return { label: key, value: key };
               }),

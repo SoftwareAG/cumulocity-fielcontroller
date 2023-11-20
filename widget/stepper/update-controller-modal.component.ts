@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { ModalLabels } from "@c8y/ngx-components";
-import { Controller, DataType, RegisterType } from "../share/profile.model";
+import { Controller, DataType, FunctionCode, FunctionCodeList } from "../share/profile.model";
 import { FormlyFieldConfig } from "@ngx-formly/core";
 import { FormGroup } from "@angular/forms";
 import { Subject } from "rxjs";
@@ -38,14 +38,14 @@ export class UpdateControllerComponent implements OnInit {
         fieldGroupClassName: "row",
         fieldGroup: [
           {
-            className: "col-lg-6",
-            key: "type",
+            className: "col-lg-12",
+            key: "functionCode",
             type: "select",
             wrappers: ["c8y-form-field"],
             templateOptions: {
-              label: "Controller type",
-              options: Object.keys(RegisterType).map((key) => {
-                return { label: key, value: key };
+              label: "Function Code",
+              options: FunctionCodeList.map((key) => {
+                return { label: `${key.code} - ${key.description}`, value: key.code };
               }),
               disabled: !this.update,
               required: true,
