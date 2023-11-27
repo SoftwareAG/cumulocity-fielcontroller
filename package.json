@@ -1,7 +1,7 @@
 {
-  "name": "cumulocity-fieldcontroller",
+  "name": "customy-fieldcontroller",
   "version": "1018.0.176",
-  "description": "This is the Cumulocity module federation plugin. Plugins can be developed like any Cumulocity application, but can be used at runtime by other applications. Therefore, they export an Angular module which can then be imported by any other application. The exports are defined in `package.json`:",
+  "description": "Wizard to define a custom profile for a modbus, ... configuration",
   "scripts": {
     "start": "c8ycli server",
     "start:admin": "npm start -- --shell administration",
@@ -45,10 +45,10 @@
   },
   "c8y": {
     "application": {
-      "name": "cumulocity-fieldcontroller",
-      "description": "Custom field controller for modbus, ...",
-      "contextPath": "cumulocity-fieldcontroller",
-      "key": "cumulocity-fieldcontroller-application-key",
+      "name": "Custom field-controller",
+      "description": "Custom field-controller for modbus, ...",
+      "contextPath": "sag-ps-pkg-cumulocity-fieldcontroller",
+      "key": "sag-ps-pkg-cumulocity-fieldcontroller-key",
       "globalTitle": "Custom field controller for modbus, ...",
       "tabsHorizontal": true,
       "isPackage": true,
@@ -56,10 +56,10 @@
       "package": "plugin",
       "exports": [
         {
-          "name": "fieldcontroller configuration",
+          "name": "Custom field-controller",
           "module": "FieldcontrollerPluginModule",
           "path": "./widget/fieldcontroller-plugin.module.ts",
-          "description": "Custom field controller for modbus, ..."
+          "description": "Custom field-controller for modbus, ..."
         }
       ],
       "remotes": {
