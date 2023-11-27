@@ -1,6 +1,6 @@
 {
   "name": "customy-fieldcontroller",
-  "version": "1018.0.176",
+  "version": "0.0.1",
   "description": "Wizard to define a custom profile for a modbus, ... configuration",
   "scripts": {
     "start": "c8ycli server",
